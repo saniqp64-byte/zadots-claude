@@ -1,0 +1,86 @@
+/* Rofi · macOS Spotlight */
+configuration {
+    modi:              "drun,run,window";
+    show-icons:        true;
+    icon-theme:        "Papirus-Dark";
+    drun-display-format: "{name}";
+}
+
+* {
+    font: "Inter 13";
+    bg:     #1e1e22c8;
+    bg1:    #ffffff14;
+    fg:     #f5f5f7;
+    grey:   #98989d;
+    blue:   #0a84ff;
+    red:    #ff453a;
+
+    background-color: transparent;
+    text-color:       @fg;
+    margin:  0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    location:     center;
+    anchor:       center;
+    y-offset:     -180px;
+    width:        680px;
+    background-color: @bg;
+    border:       1px;
+    border-color: #ffffff26;
+    border-radius: 16px;
+}
+
+mainbox { children: [ inputbar, listview ]; }
+
+inputbar {
+    padding:  14px 18px;
+    spacing:  12px;
+    children: [ icon-search, entry ];
+    border:   0 0 1px 0;
+    border-color: #ffffff1a;
+}
+
+icon-search {
+    expand:   false;
+    filename: "search";
+    size:     22px;
+    vertical-align: 0.5;
+}
+
+entry {
+    font:              "Inter 20";
+    placeholder:       "Spotlight";
+    placeholder-color: @grey;
+    vertical-align:    0.5;
+    cursor:            text;
+}
+
+listview {
+    padding:      8px;
+    lines:        7;
+    columns:      1;
+    fixed-height: false;
+    dynamic:      true;
+    scrollbar:    false;
+    spacing:      2px;
+}
+
+element {
+    padding: 7px 10px;
+    spacing: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+element normal.normal, element alternate.normal { background-color: transparent; text-color: @fg; }
+element selected.normal { background-color: @blue; text-color: #ffffff; }
+element normal.urgent   { text-color: @red; }
+element normal.active   { text-color: @blue; }
+
+element-icon { size: 28px; cursor: inherit; vertical-align: 0.5; }
+element-text { text-color: inherit; cursor: inherit; vertical-align: 0.5; }
+
+message { padding: 8px; }
+textbox { text-color: @fg; }

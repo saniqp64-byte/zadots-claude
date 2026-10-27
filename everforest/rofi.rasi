@@ -1,0 +1,89 @@
+/* Rofi · Everforest · меню сверху по центру */
+configuration {
+    modi:              "drun,run,window";
+    show-icons:        true;
+    icon-theme:        "Papirus-Dark";
+    display-drun:      "";
+    display-run:       "";
+    display-window:    "";
+    drun-display-format: "{name}";
+}
+
+* {
+    font: "Monocraft 12";
+
+    bg0:   #2d353bee;
+    bg1:   #343f44;
+    bg2:   #3d484d;
+    bg3:   #475258;
+    fg:    #d3c6aa;
+    grey:  #859289;
+    green: #a7c080;
+    red:   #e67e80;
+
+    background-color: transparent;
+    text-color:       @fg;
+    margin:  0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    location:     north;
+    anchor:       north;
+    y-offset:     12px;
+    width:        560px;
+    background-color: @bg0;
+    border:       1px;
+    border-color: @bg3;
+    border-radius: 14px;
+}
+
+mainbox {
+    padding:  12px;
+    spacing:  10px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    padding:  10px 14px;
+    spacing:  10px;
+    border-radius: 10px;
+    background-color: @bg1;
+    children: [ prompt, entry ];
+}
+
+prompt { text-color: @green; }
+
+entry {
+    placeholder:       "Поиск...";
+    placeholder-color: @grey;
+    cursor:            text;
+}
+
+listview {
+    lines:        8;
+    columns:      1;
+    fixed-height: false;
+    dynamic:      true;
+    scrollbar:    false;
+    spacing:      4px;
+}
+
+element {
+    padding: 8px 12px;
+    spacing: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+element normal.normal, element alternate.normal { background-color: transparent; text-color: @fg; }
+element selected.normal { background-color: @bg2; text-color: @green; }
+element normal.urgent   { text-color: @red; }
+element normal.active   { text-color: @green; }
+
+element-icon { size: 24px; cursor: inherit; vertical-align: 0.5; }
+element-text { text-color: inherit; highlight: bold #a7c080; cursor: inherit; vertical-align: 0.5; }
+
+message  { padding: 8px; border-radius: 10px; background-color: @bg1; }
+textbox  { text-color: @fg; }

@@ -1,0 +1,87 @@
+// Waybar · Everforest · маленькая вертикальная панель слева
+{
+    "layer": "top",
+    "position": "left",
+    "width": 40,
+    "margin-top": 12,
+    "margin-bottom": 12,
+    "margin-left": 12,
+    "spacing": 4,
+
+    "modules-left":   ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right":  ["tray", "wireplumber", "network", "battery", "custom/power"],
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip-format": "Приложения",
+        "on-click": "rofi -show drun"
+    },
+
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
+        "format": "{icon}",
+        "format-icons": {
+            "active": "\u25cf",
+            "urgent": "\u25cf",
+            "empty": "\u25cb",
+            "default": "\u25cb"
+        },
+        "persistent-workspaces": { "*": 5 }
+    },
+
+    "clock": {
+        "format": "{:%H\n%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "today": "<span color='#a7c080'><b>{}</b></span>"
+            }
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+
+    "wireplumber": {
+        "format": "{icon}",
+        "format-muted": "󰝟",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "tooltip-format": "Громкость: {volume}%",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+    },
+
+    "network": {
+        "format-wifi": "{icon}",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "tooltip-format-wifi": "{essid} · {signalStrength}%\n⇣ {bandwidthDownBytes}  ⇡ {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{ifname}\n⇣ {bandwidthDownBytes}  ⇡ {bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Нет сети",
+        "on-click": "kitty -e nmtui",
+        "interval": 5
+    },
+
+    "battery": {
+        "format": "{icon}",
+        "format-charging": "󰂄",
+        "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂", "󰁹"],
+        "tooltip-format": "{capacity}% · {timeTo}",
+        "states": { "warning": 20, "critical": 10 },
+        "interval": 10
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip-format": "Выключение",
+        "on-click": "~/.config/rofi/powermenu.sh"
+    }
+}

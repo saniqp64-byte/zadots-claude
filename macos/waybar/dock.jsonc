@@ -1,0 +1,47 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 64,
+    "margin-bottom": 8,
+    "modules-center": [
+        "custom/launchpad",
+        "custom/files",
+        "custom/browser",
+        "custom/code",
+        "custom/sep",
+        "wlr/taskbar"
+    ],
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 40,
+        "icon-theme": "Papirus-Dark",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "on-click-right": "minimize-raise"
+    },
+    "custom/files": {
+        "format": " ",
+        "on-click": "gtk-launch nemo",
+        "tooltip-format": "Файлы"
+    },
+    "custom/browser": {
+        "format": " ",
+        "on-click": "gtk-launch chromium",
+        "tooltip-format": "Chromium"
+    },
+    "custom/code": {
+        "format": " ",
+        "on-click": "gtk-launch visual-studio-code-electron",
+        "tooltip-format": "VS Code"
+    },
+    "custom/sep": {
+        "format": " ",
+        "tooltip": false
+    },
+    "custom/launchpad": {
+        "format": " ",
+        "on-click": "rofi -show drun",
+        "tooltip-format": "Launchpad"
+    }
+}
